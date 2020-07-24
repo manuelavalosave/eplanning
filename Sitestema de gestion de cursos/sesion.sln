@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sesion", "sesion\sesion.csproj", "{1AB3D040-F6B6-4525-AED5-8381DC7EC228}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu Principal", "WindowsFormsApplication1\Menu Principal.csproj", "{3B37A654-D913-4D0B-BC83-2E57EAA7A7CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AB3D040-F6B6-4525-AED5-8381DC7EC228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AB3D040-F6B6-4525-AED5-8381DC7EC228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AB3D040-F6B6-4525-AED5-8381DC7EC228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AB3D040-F6B6-4525-AED5-8381DC7EC228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B37A654-D913-4D0B-BC83-2E57EAA7A7CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B37A654-D913-4D0B-BC83-2E57EAA7A7CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B37A654-D913-4D0B-BC83-2E57EAA7A7CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B37A654-D913-4D0B-BC83-2E57EAA7A7CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

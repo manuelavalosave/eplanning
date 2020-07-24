@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actividad_Didactica">
+          <Key>
+            <PropertyRef Name="Id_Acti" />
+          </Key>
+          <Property Name="Id_Acti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="T_Activ" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Parcial" Type="int" Nullable="false" />
+          <Property Name="Materia" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="checador_act" Type="nvarchar" MaxLength="20" />
+          <Property Name="sesion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Bloque">
+          <Key>
+            <PropertyRef Name="IdBloque" />
+          </Key>
+          <Property Name="IdBloque" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Parcial" Type="tinyint" Nullable="false" />
+          <Property Name="Porcentaje" Type="float" Nullable="false" />
+          <Property Name="Grupos" Type="varchar" MaxLength="20" />
+          <Property Name="nombre_materia" Type="varchar" MaxLength="200" />
+          <Property Name="Pre_competencia" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="BloqueCompetencia">
+          <Key>
+            <PropertyRef Name="IdBloqueCompetencia" />
+          </Key>
+          <Property Name="IdBloqueCompetencia" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBloque" Type="bigint" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contenidos_a_Evaluar">
+          <Key>
+            <PropertyRef Name="IdBloque" />
+          </Key>
+          <Property Name="IdBloque" Type="int" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="255" />
+          <Property Name="Porcentaje" Type="real" />
+          <Property Name="Parcial" Type="int" />
+        </EntityType>
+        <EntityType Name="Datos_Plantel">
+          <Key>
+            <PropertyRef Name="Id_Plantel" />
+          </Key>
+          <Property Name="Id_Plantel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_plantel" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nombre_corto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="12" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Grupos">
+          <Key>
+            <PropertyRef Name="Id_Grupos" />
+          </Key>
+          <Property Name="Id_Grupos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_materia" Type="int" Nullable="false" />
+          <Property Name="Grupos" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materia">
+          <Key>
+            <PropertyRef Name="Id_materia" />
+          </Key>
+          <Property Name="Id_materia" Type="int" Nullable="false" />
+          <Property Name="type" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Nombre_materia" Type="varchar" MaxLength="1" />
+          <Property Name="Semestre" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Materia_t">
+          <Key>
+            <PropertyRef Name="Id_materia" />
+          </Key>
+          <Property Name="Id_materia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_materia" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Semestre" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Grupo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Plani_por_parcial">
+          <Key>
+            <PropertyRef Name="Id_planificacion" />
+          </Key>
+          <Property Name="Id_planificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comp_Ger" Type="nvarchar" MaxLength="800" />
+          <Property Name="Comp_Dici" Type="nvarchar" MaxLength="800" Nullable="false" />
+          <Property Name="Conflicto" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Situacion" Type="nvarchar" MaxLength="800" Nullable="false" />
+          <Property Name="Parcial" Type="int" Nullable="false" />
+          <Property Name="nombre_materia" Type="nvarchar" MaxLength="200" />
+          <Property Name="Posicion_list" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Secuencia_Didactica">
+          <Key>
+            <PropertyRef Name="Id_Acti" />
+          </Key>
+          <Property Name="Id_Acti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="T_Activ" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Parcial" Type="int" Nullable="false" />
+          <Property Name="Materia" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="checador_act" Type="nvarchar" MaxLength="20" />
+          <Property Name="sesion" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="BloqueComp">
+          <End Role="Bloque" Type="Self.Bloque" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BloqueCompetencia" Type="Self.BloqueCompetencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloque">
+              <PropertyRef Name="IdBloque" />
+            </Principal>
+            <Dependent Role="BloqueCompetencia">
+              <PropertyRef Name="IdBloque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoModelStoreContainer">
+          <EntitySet Name="Actividad_Didactica" EntityType="Self.Actividad_Didactica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bloque" EntityType="Self.Bloque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BloqueCompetencia" EntityType="Self.BloqueCompetencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contenidos_a_Evaluar" EntityType="Self.Contenidos_a_Evaluar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Datos_Plantel" EntityType="Self.Datos_Plantel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupos" EntityType="Self.Grupos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materia_t" EntityType="Self.Materia_t" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plani_por_parcial" EntityType="Self.Plani_por_parcial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Secuencia_Didactica" EntityType="Self.Secuencia_Didactica" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="BloqueComp" Association="Self.BloqueComp">
+            <End Role="Bloque" EntitySet="Bloque" />
+            <End Role="BloqueCompetencia" EntitySet="BloqueCompetencia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bloque">
+          <Key>
+            <PropertyRef Name="IdBloque" />
+          </Key>
+          <Property Name="IdBloque" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parcial" Type="Byte" Nullable="false" />
+          <Property Name="Porcentaje" Type="Double" Nullable="false" />
+          <NavigationProperty Name="BloqueCompetencia" Relationship="Self.BloqueComp" FromRole="Bloque" ToRole="BloqueCompetencia" />
+          <Property Name="Grupos" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_materia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Pre_competencia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BloqueCompetencia">
+          <Key>
+            <PropertyRef Name="IdBloqueCompetencia" />
+          </Key>
+          <Property Name="IdBloqueCompetencia" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBloque" Type="Int64" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bloque" Relationship="Self.BloqueComp" FromRole="BloqueCompetencia" ToRole="Bloque" />
+        </EntityType>
+        <Association Name="BloqueComp">
+          <End Role="Bloque" Type="Self.Bloque" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BloqueCompetencia" Type="Self.BloqueCompetencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloque">
+              <PropertyRef Name="IdBloque" />
+            </Principal>
+            <Dependent Role="BloqueCompetencia">
+              <PropertyRef Name="IdBloque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bloque" EntityType="Self.Bloque" />
+          <EntitySet Name="BloqueCompetencia" EntityType="Self.BloqueCompetencia" />
+          <AssociationSet Name="BloqueComp" Association="Self.BloqueComp">
+            <End Role="Bloque" EntitySet="Bloque" />
+            <End Role="BloqueCompetencia" EntitySet="BloqueCompetencia" />
+          </AssociationSet>
+          <EntitySet Name="Contenidos_a_Evaluar" EntityType="ProyectoModel.Contenidos_a_Evaluar" />
+          <EntitySet Name="Materia_t" EntityType="ProyectoModel.Materia_t" />
+          <EntitySet Name="Materia" EntityType="ProyectoModel.Materia" />
+          <EntitySet Name="Grupos" EntityType="ProyectoModel.Grupos" />
+          <EntitySet Name="Plani_por_parcial" EntityType="ProyectoModel.Plani_por_parcial" />
+          <EntitySet Name="Datos_Plantel" EntityType="ProyectoModel.Datos_Plantel" />
+          <EntitySet Name="Actividad_Didactica" EntityType="ProyectoModel.Actividad_Didactica" />
+          <EntitySet Name="Secuencia_Didactica" EntityType="ProyectoModel.Secuencia_Didactica" />
+        </EntityContainer>
+        <EntityType Name="Contenidos_a_Evaluar">
+          <Key>
+            <PropertyRef Name="IdBloque" />
+          </Key>
+          <Property Name="IdBloque" Type="Int32" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Porcentaje" Type="Single" />
+          <Property Name="Parcial" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Materia_t">
+          <Key>
+            <PropertyRef Name="Id_materia" />
+          </Key>
+          <Property Name="Id_materia" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_materia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Semestre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Grupo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Materia">
+          <Key>
+            <PropertyRef Name="Id_materia" />
+          </Key>
+          <Property Name="Id_materia" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre_materia" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Semestre" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Grupos">
+          <Key>
+            <PropertyRef Name="Id_Grupos" />
+          </Key>
+          <Property Name="Id_Grupos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_materia" Type="Int32" Nullable="false" />
+          <Property Name="Grupos1" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Plani_por_parcial">
+          <Key>
+            <PropertyRef Name="Id_planificacion" />
+          </Key>
+          <Property Name="Id_planificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comp_Ger" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="Comp_Dici" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="Conflicto" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Situacion" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="Parcial" Type="Int32" Nullable="false" />
+          <Property Name="nombre_materia" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Posicion_list" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Datos_Plantel">
+          <Key>
+            <PropertyRef Name="Id_Plantel" />
+          </Key>
+          <Property Name="Id_Plantel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_plantel" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_corto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Actividad_Didactica">
+          <Key>
+            <PropertyRef Name="Id_Acti" />
+          </Key>
+          <Property Name="Id_Acti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="T_Activ" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Parcial" Type="Int32" Nullable="false" />
+          <Property Name="Materia" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="checador_act" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sesion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Secuencia_Didactica">
+          <Key>
+            <PropertyRef Name="Id_Acti" />
+          </Key>
+          <Property Name="Id_Acti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="T_Activ" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Parcial" Type="Int32" Nullable="false" />
+          <Property Name="Materia" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="checador_act" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sesion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoModelStoreContainer" CdmEntityContainer="ProyectoEntities">
+          <EntitySetMapping Name="Bloque">
+            <EntityTypeMapping TypeName="ProyectoModel.Bloque">
+              <MappingFragment StoreEntitySet="Bloque">
+                <ScalarProperty Name="Pre_competencia" ColumnName="Pre_competencia" />
+                <ScalarProperty Name="nombre_materia" ColumnName="nombre_materia" />
+                <ScalarProperty Name="Grupos" ColumnName="Grupos" />
+                <ScalarProperty Name="IdBloque" ColumnName="IdBloque" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Parcial" ColumnName="Parcial" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BloqueCompetencia">
+            <EntityTypeMapping TypeName="ProyectoModel.BloqueCompetencia">
+              <MappingFragment StoreEntitySet="BloqueCompetencia">
+                <ScalarProperty Name="IdBloqueCompetencia" ColumnName="IdBloqueCompetencia" />
+                <ScalarProperty Name="IdBloque" ColumnName="IdBloque" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contenidos_a_Evaluar">
+            <EntityTypeMapping TypeName="ProyectoModel.Contenidos_a_Evaluar">
+              <MappingFragment StoreEntitySet="Contenidos_a_Evaluar">
+                <ScalarProperty Name="Parcial" ColumnName="Parcial" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="IdBloque" ColumnName="IdBloque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materia_t">
+            <EntityTypeMapping TypeName="ProyectoModel.Materia_t">
+              <MappingFragment StoreEntitySet="Materia_t">
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Semestre" ColumnName="Semestre" />
+                <ScalarProperty Name="Nombre_materia" ColumnName="Nombre_materia" />
+                <ScalarProperty Name="Id_materia" ColumnName="Id_materia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materia">
+            <EntityTypeMapping TypeName="ProyectoModel.Materia">
+              <MappingFragment StoreEntitySet="Materia">
+                <ScalarProperty Name="Semestre" ColumnName="Semestre" />
+                <ScalarProperty Name="Nombre_materia" ColumnName="Nombre_materia" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="Id_materia" ColumnName="Id_materia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupos">
+            <EntityTypeMapping TypeName="ProyectoModel.Grupos">
+              <MappingFragment StoreEntitySet="Grupos">
+                <ScalarProperty Name="Grupos1" ColumnName="Grupos" />
+                <ScalarProperty Name="Id_materia" ColumnName="Id_materia" />
+                <ScalarProperty Name="Id_Grupos" ColumnName="Id_Grupos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plani_por_parcial">
+            <EntityTypeMapping TypeName="ProyectoModel.Plani_por_parcial">
+              <MappingFragment StoreEntitySet="Plani_por_parcial">
+                <ScalarProperty Name="Posicion_list" ColumnName="Posicion_list" />
+                <ScalarProperty Name="nombre_materia" ColumnName="nombre_materia" />
+                <ScalarProperty Name="Parcial" ColumnName="Parcial" />
+                <ScalarProperty Name="Situacion" ColumnName="Situacion" />
+                <ScalarProperty Name="Conflicto" ColumnName="Conflicto" />
+                <ScalarProperty Name="Comp_Dici" ColumnName="Comp_Dici" />
+                <ScalarProperty Name="Comp_Ger" ColumnName="Comp_Ger" />
+                <ScalarProperty Name="Id_planificacion" ColumnName="Id_planificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Datos_Plantel">
+            <EntityTypeMapping TypeName="ProyectoModel.Datos_Plantel">
+              <MappingFragment StoreEntitySet="Datos_Plantel">
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre_corto" ColumnName="Nombre_corto" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Nombre_plantel" ColumnName="Nombre_plantel" />
+                <ScalarProperty Name="Id_Plantel" ColumnName="Id_Plantel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actividad_Didactica">
+            <EntityTypeMapping TypeName="ProyectoModel.Actividad_Didactica">
+              <MappingFragment StoreEntitySet="Actividad_Didactica">
+                <ScalarProperty Name="sesion" ColumnName="sesion" />
+                <ScalarProperty Name="checador_act" ColumnName="checador_act" />
+                <ScalarProperty Name="Materia" ColumnName="Materia" />
+                <ScalarProperty Name="Parcial" ColumnName="Parcial" />
+                <ScalarProperty Name="T_Activ" ColumnName="T_Activ" />
+                <ScalarProperty Name="Id_Acti" ColumnName="Id_Acti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Secuencia_Didactica">
+            <EntityTypeMapping TypeName="ProyectoModel.Secuencia_Didactica">
+              <MappingFragment StoreEntitySet="Secuencia_Didactica">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="sesion" ColumnName="sesion" />
+                <ScalarProperty Name="checador_act" ColumnName="checador_act" />
+                <ScalarProperty Name="Materia" ColumnName="Materia" />
+                <ScalarProperty Name="Parcial" ColumnName="Parcial" />
+                <ScalarProperty Name="T_Activ" ColumnName="T_Activ" />
+                <ScalarProperty Name="Id_Acti" ColumnName="Id_Acti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
